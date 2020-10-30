@@ -22,9 +22,10 @@
 
       <p
         v-if="data.tagline !== null"
+        v-for="tagline in data.tagline.split('|-')"
         class="description"
       >
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
+        {{ tagline || $description || 'Welcome to your VuePress site' }}<br>
       </p>
 
       <p
@@ -42,14 +43,20 @@
       v-if="data.features && data.features.length"
       class="features"
     >
-      <div
+      <a
         v-for="(feature, index) in data.features"
         :key="index"
+        :href="feature.link"
         class="feature"
       >
+        <img
+          v-if="feature.icon"
+          :src="$withBase(feature.icon)"
+          alt="icon"
+        >
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
-      </div>
+      </a>
     </div>
 
     <Content class="theme-default-content custom" />
@@ -76,6 +83,7 @@ export default {
       console.log('ENTRA');
     },
     data () {
+      console.log(this.$page.frontmatter);
       return this.$page.frontmatter
     },
 
@@ -110,22 +118,25 @@ export default {
     h1, .description, .action
       margin 1.8rem auto
     .description
-      max-width 35rem
-      font-size 1.6rem
+      max-width 50rem
+      font-size 1.4rem
       line-height 1.3
       color lighten($textColor, 80%)
     .action-button
       display inline-block
       font-size 1.2rem
       color #fff
-      background-color $accentColor
+      // background-color $accentColor
+      background-color #4469d4
       padding 0.8rem 1.6rem
-      border-radius 4px
+      border-radius 50px
       transition background-color .1s ease
       box-sizing border-box
-      border-bottom 1px solid darken($accentColor, 10%)
+      // border-bottom 1px solid darken($accentColor, 10%)
+      border-bottom 1px solid darken(#4469d4, 10%)
       &:hover
-        background-color lighten($accentColor, 10%)
+        // background-color lighten($accentColor, 10%)
+        background-color lighten(#4469d4, 10%)
   .features
     border-top 1px solid $borderColor
     padding 1.2rem 0
@@ -145,7 +156,11 @@ export default {
     border-width 0.05px
     border-radius 5px
     padding 10px
-    box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, .2);
+    height 260px
+    &:hover
+      box-shadow: 1px 1px 6px 6px rgba(117, 117, 117, .2);
+    img
+      max-width 30%
     h2
       font-size 1.4rem
       font-weight 500

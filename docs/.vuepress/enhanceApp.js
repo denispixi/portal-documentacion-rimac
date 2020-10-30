@@ -23,25 +23,13 @@ export default ({
     }
   });
 
-  router.beforeEach((to, from, next) => {
-
-    console.log({ to, from, next });
-    if (to.path !== '/') {
+  router.beforeEach((to, _from, next) => {
+    if (to.path === '/')
+      next();
+    else
       Auth.currentAuthenticatedUser()
-        .then(user => {
-          console.log('autorizado');
-          console.log({ user });
-          next()
-        })
-        .catch(() => {
-          // next('/')
-          console.log('no autorizado');
-          // alert('debes iniciar sesion para ver el contenido');
-          Auth.federatedSignIn({ customProvider: "AzureADProvider" });
-        });
-    } else {
-      next()
-    }
+        .then(_user => next()) // autorizado
+        .catch(() => Auth.federatedSignIn({ customProvider: "AzureADProvider" })); // no autorizado
   });
 
 }

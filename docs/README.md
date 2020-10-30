@@ -1,17 +1,22 @@
 ---
 home: true
 heroImage: /banner.png
-heroText: Rimac thecnical documentation
-tagline: Hero subtitle
-actionText: Get Started →
-actionLink: /guide/
+heroText: Rimac Docs
+tagline: 📚 Bienvenido a nuestro knowledge center |- Un lugar cetralizado para seguir las bases del ecosistema técnico de Rimac
+actionText: Iniciemos →
+actionLink: /guide/getting-started/
 features:
-- title: Simplicity First
-  details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  link: /hello
-- title: Vue-Powered
-  details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-- title: Performant
-  details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-footer: MIT Licensed | Copyright © 2018-present Rimac Seguros y Reaseguros
+- title: Gobierno de APIs
+  details: Explora los conceptos, procesos, metodologías y lineamientos para construir y mantener APIs en Rimac
+  link: /docs/getting-started/
+  icon: /logo.png
+- title: Cloud
+  details: Explora las herramientas y arquitecturas dentro de una solución cloud en Rimac
+  link: /docs/getting-started/
+  icon: /logo.png
+- title: Desarrollo
+  details: Explora las guías y herramientas para desarrollar aplicaciones basadas en los estándares de Rimac
+  link: /docs/getting-started/
+  icon: /logo.png
+footer: Rimac Seguros y Reaseguros | Copyright © 2020
 ---

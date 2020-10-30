@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@aws-amplify/auth": "^3.4.7",
-    "vuepress-theme-reco": "^1.5.7",
-    "@okta/okta-vue": "1.1"
+    "front-matter": "^4.0.2"
   }
 }

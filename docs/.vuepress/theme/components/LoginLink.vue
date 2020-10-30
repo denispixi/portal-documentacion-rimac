@@ -29,18 +29,18 @@ export default {
       Auth.currentAuthenticatedUser()
         .then((user) => {
           this.authenticated = true;
-          console.log({ user });
+          // console.log({ user });
         })
         .catch(() => (this.authenticated = false));
       // console.log({ authUser })
     },
-    async login() {
+    login() {
       console.log("iniciando sesion");
-      await Auth.federatedSignIn({ customProvider: "AzureADProvider" });
+      Auth.federatedSignIn({ customProvider: "AzureADProvider" });
     },
-    async logout() {
+    logout() {
       console.log("cerrando sesion");
-      await Auth.signOut();
+      Auth.signOut();
     },
   },
 };

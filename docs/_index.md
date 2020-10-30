@@ -13,5 +13,10 @@ navbarSections:
 - text: Advanced
   link: /advanced/frontmatter/
 - text: Very Advanced
-  link: /advanced2/frontmatter/
+  items:
+  - text: Frontmatter
+    link: /advanced2/frontmatter/
+  - text: Permalinks
+    link: /advanced2/permalinks/
+  
 ---

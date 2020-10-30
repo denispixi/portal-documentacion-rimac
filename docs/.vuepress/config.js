@@ -2,7 +2,7 @@ const fs = require("fs")
 const path = require("path")
 const fm = require('front-matter')
 
-function genDynamicSidebarConfig(folder, title) {
+function buildSidebarByFolder(folder, title) {
   const extension = [".md"]
   const files = fs
     .readdirSync(path.join(`${__dirname}/../${folder}`))
@@ -35,7 +35,7 @@ function buildSidebarsFromConfig() {
 
   const sidebar = {}
   for (const { folder, title } of content.attributes.sidebarSections) {
-    sidebar[`/${folder}/`] = genDynamicSidebarConfig(folder, title)
+    sidebar[`/${folder}/`] = buildSidebarByFolder(folder, title)
   }
   return sidebar
 }
@@ -43,7 +43,11 @@ function buildSidebarsFromConfig() {
 function buildNavbarFromConfig() {
   const data = fs.readFileSync(path.join(`${__dirname}/../_index.md`), 'utf8')
   const content = fm(data)
-  return content.attributes.navbarSections.map(({ link, text }) => ({ text, link }))
+  return content.attributes.navbarSections.map(
+    ({ link, text, items }) => items
+      ? { text, items: items.map(({ link, text }) => ({ text, link })) }
+      : { text, link }
+  )
 }
 
 module.exports = {

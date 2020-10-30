@@ -157,6 +157,7 @@ export default {
     border-radius 5px
     padding 10px
     height 260px
+    margin-bottom 15px
     &:hover
       box-shadow: 1px 1px 6px 6px rgba(117, 117, 117, .2);
     img
